@@ -11,7 +11,7 @@
         </locale-config>                             
         
         <resource-bundle>
-            <base-name>com.test.etiquetas</base-name>
+            <base-name>com.test.propiedades.etiquetas</base-name>
             <var>etq</var>
         </resource-bundle>        
         
