@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+
+<f:view
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    >
+    <h:head />
+    <h:body>
+
+        <h:form id="formView">
+
+            <h:outputText value="#{i18n['portlet.base.hola']}" />
+            <br/>
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-8"/>
+                <div class="ui-g-12 ui-md-4">
+                    <center>
+                        <h:panelGrid columns="3">        
+                            <h:outputText styleClass="label-titulo" value="#{etq['etiqueta.comun.idioma']} "  escape="false" />
+                            <h:outputText value="        " /> 
+                            <p:selectOneMenu value="#{usuario.localidad}" >
+                                <f:selectItems value="#{usuario.lstPaises}"></f:selectItems>
+                                <p:ajax listener="#{usuario.cambioLocalidad}" update="@form"></p:ajax>
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                    </center>                    
+                </div>
+            </div>
+
+
+            <br/>
+            <p:panel id="panelDatosUsuario" styleClass="panelcontent" header="#{etq['titulo.usuario']}">
+
+                <h:panelGrid columns="3"  style="width: 100%" columnClasses="col50,col50"  >                
+                    <h:panelGrid style="width: 100%" columns="3" columnClasses="col38-right,col2-center,col60-left"> 
+
+                        <h:outputText styleClass="label-titulo" value="#{etq['cedula']}: "  escape="false" />
+                        <h:outputText value="        " /> 
+                        <h:outputText id="txtIdUsuario" />
+
+                        <h:outputText styleClass="label-titulo" value="#{etq['nacionalidad.usuario']}: " escape="false"/>
+                        <h:outputText value="        " /> 
+                        <h:outputText id="txtNacionalidad" />
+
+                        <h:outputText styleClass="label-titulo" value="#{etq['nombres.usuario']}: " escape="false"/>  
+                        <h:outputText value="        " />  
+                        <h:outputText id="txtNombreCompleto" />                        
+
+                        <h:outputText styleClass="label-titulo" value="#{etq['pais.usuario']}: " escape="false"/> 
+                        <h:outputText value="       " />  
+                        <h:outputText id="txtPais" />                        
+
+                        <h:outputText styleClass="label-titulo" value="#{etq['ciudad.usuario']}: " escape="false"/> 
+                        <h:outputText value="        " />
+                        <h:outputText id="txtCiudad" />                        
+
+                    </h:panelGrid>
+                    <h:panelGrid style="width: 100%" columns="3" columnClasses="col38-right,col2-center,col60-left"> 
+
+                        <h:outputText styleClass="label-titulo" value="#{etq['direccion.usuario']}: " escape="false"/>  
+                        <h:outputText value="        " />
+                        <h:outputText id="txtCalle"  />                        
+
+                        <h:outputText styleClass="label-titulo" value="#{etq['telefono.usuario']}: " escape="false"/>  
+                        <h:outputText value="        " />
+                        <h:outputText id="txtTelefono"  />                        
+
+                        <h:outputText styleClass="label-titulo" value="#{etq['edad.usuario']}: " escape="false"/>  
+                        <h:outputText value="        " />
+                        <h:outputText id="txtEdad" />                        
+
+                        <h:outputText styleClass="label-titulo" value="#{etq['pais.consulado']}: " escape="false"/>  
+                        <h:outputText value="        " />
+                        <h:outputText id="txtPaisConsulado"  />                        
+
+                        <h:outputText styleClass="label-titulo" value="#{etq['nombre.consulado']}: " escape="false"/>  
+                        <h:outputText value="        " />
+                        <h:outputText id="txtConsulado"  />
+
+                    </h:panelGrid>
+                    <h:outputText value="" />
+                </h:panelGrid>
+                <br/>
+                <p:commandButton action="#{usuario.setHola}" value="Hola"></p:commandButton>                
+                <p:commandButton action="#{usuario.setEspaniol}" value="Es" update="@form" process="@this"></p:commandButton>
+                <p:commandButton action="#{usuario.setIngles}" value="En" update="@form" process="@this"></p:commandButton>
+
+                <br/>
+
+                <h:outputText value="#{usuario.localidad}" />                
+            </p:panel>
+
+        </h:form>
+    </h:body>
+</f:view>
